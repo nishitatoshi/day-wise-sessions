@@ -32,7 +32,8 @@ public class ArrayListDemo3 {
 		System.out.println("elements of o2 are "+o2);
 		
 		Collections.sort(o2);
-		
+		System.out.println("sorted elements of o2 are "+o2);
+
 
 
 	}
