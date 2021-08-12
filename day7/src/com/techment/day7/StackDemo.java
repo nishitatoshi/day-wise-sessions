@@ -5,7 +5,7 @@ public class StackDemo {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		StackDemo s1= new StackDemo();
+		Stack s1= new Stack();
 		s1.push(1);
 		s1.add(2);
 		s1.add(3);
