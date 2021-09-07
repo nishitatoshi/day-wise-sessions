@@ -3,6 +3,8 @@ package com.techment.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,16 +23,19 @@ public class EmployeeControllerWithDb {
 	IEmployeeService iemployeeService;
 	
 	@GetMapping(value = "/viewAllEmployee")
-	public List<Employee> viewAllEmployee()
+	public ResponseEntity<List<Employee>> viewAllEmployee()
 	{
-		return iemployeeService.viewAllEmployee();
+		return new ResponseEntity<List<Employee>>(iemployeeService.viewAllEmployee(), HttpStatus.ACCEPTED);
+		
 		
 	}
 
 	@PostMapping(value = "/addNewEmployee")
-	public String addNewEmployee(@RequestBody Employee employee)
+	public ResponseEntity<String> addNewEmployee(@RequestBody Employee employee)
 	{
-		return iemployeeService.addEmployee(employee);
+		//return new ResponseEntity<String> (iemployeeService.addEmployee(employee), HttpStatus.ACCEPTED);
+		iemployeeService.addEmployee(employee);
+		return new ResponseEntity<String>("employee added..", HttpStatus.OK);
 	}
 	
 	
